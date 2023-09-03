@@ -7,15 +7,16 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["name"],
+          attributes: ["username"],
         },
         {
           model: Comment,
-          attributes: ["text"],
+          attributes: ["comment_text"],
         },
       ],
     });
     const blogPosts = postData.map((post) => post.get({ plain: true }));
+
     res.render("homepage", {
       blogPosts,
     });
