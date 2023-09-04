@@ -25,4 +25,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/dashboard", async (req, res) => {
+  res.render("dashboard");
+});
+
+router.get("/login", async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login");
+});
+
 module.exports = router;
