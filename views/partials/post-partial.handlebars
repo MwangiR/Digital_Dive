@@ -1,0 +1,20 @@
+<div class="uk-child-width-expand@l uk-width-2xlarge" uk-grid>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+            <h3 class="uk-card-title">{{title}}</h3>
+            <p>{{post_content}}</p>
+            <ul uk-accordion>
+                <li>
+                    <a class="uk-accordion-title" href="#">comments</a>
+                    <div class="uk-accordion-content">
+                        {{#each comments as |comment|}}
+                            <p>{{comment.comment_text}}</p>
+                            <br>
+                            {{else}}
+                            <p>No comments yet</p>
+                        {{/each}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
