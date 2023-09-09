@@ -1,19 +1,19 @@
 <div class="uk-container" uk-grid>
   <div class="uk-width-expand">
-    <div class="uk-card uk-card-small uk-card-hover uk-card-default uk-width-2xlarge">
+    <div class="uk-card uk-card-small uk-card-hover uk-card-default uk-width-2xlarge uk-padding current-Post" data-post-id="{{id}}">
       <div class="uk-card-title">{{title}}</div>
       <div class="uk-card-body">{{post_content}}</div>
       <ul uk-accordion>
         <li>
           <a class="uk-accordion-title" href="#">Comments</a>
           <div class="uk-accordion-content">
-            {{#if logged_in}}
+      
             <form class="uk-form-stacked newComment">
               <div class="uk-margin">
                 <label class="uk-form-label" for="form-stacked-text">Comment</label>
                 <div class="uk-form-controls">
                   <textarea
-                    class="uk-textarea usercomment"
+                    class="uk-textarea userComment"
                     id="form-stacked-text"
                     rows="3"
                     placeholder="Comment"
@@ -27,8 +27,7 @@
                     Submit
                   </button>
               </div>
-            </form>
-            {{/if}}
+            </form>      
 
             {{#each comments as |comment|}}
               <article class="uk-comment" role="comment">
@@ -58,9 +57,4 @@
   </div>
 </div>
 
-{{!-- {{#each comments as |comment|}}
-  <p>{{comment.comment_text}}</p>
-  <br />
-{{else}}
-  <p>No comments yet</p>
-{{/each}} --}}
+<script src="./js/postComment.js"></script>
