@@ -3,6 +3,8 @@ body {
 }
 
 footer {
+  position: sticky;
+  bottom: 0;
   background-color: #b8b8d1;
   text-align: center;
   padding: 10px;

@@ -1,15 +1,16 @@
 const postEditHandler = async (event) => {
   event.preventDefault();
-  console.log("clicked");
+  console.log("clicked postEdit");
+  const post_id = parseInt(event.target.closest(".post-Card").getAttribute("data-post-id"));
+  const title = event.target.querySelector(".title-edit").value.trim();
+  const content = event.target.querySelector(".userpost-edit").value.trim();
 
-  const post_id = document.querySelector("#post-Edit").getAttribute("data-post-id");
-
-  const title = document.querySelector(".title-edit").value.trim();
-  const content = document.querySelector(".userpost-edit").value.trim();
+  console.log(post_id);
+  console.log(typeof post_id);
 
   if (title && content) {
     const response = await fetch(`/api/posts/${post_id}`, {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
         title: title,
         post_content: content,
@@ -49,6 +50,29 @@ const newPostHandler = async (event) => {
   }
 };
 
-document.querySelector(".newPost").addEventListener("submit", newPostHandler);
+const postDeleteHandler = async (event) => {
+  event.preventDefault();
+  if (event.target.hasAttribute("data-post-id")) {
+    const post_id = event.target.getAttribute("data-post-id");
+    const response = await fetch(`/api/posts/${post_id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
 
-document.querySelector(".postEdit").addEventListener("submit", postEditHandler);
+document.addEventListener("submit", function (event) {
+  if (event.target.classList.contains("reEditBlog")) {
+    postEditHandler(event);
+  }
+});
+
+document.querySelectorAll(".deleteBtn").forEach(function (button) {
+  button.addEventListener("clicked", postDeleteHandler);
+});
+
+document.querySelector(".newPost").addEventListener("submit", newPostHandler);
