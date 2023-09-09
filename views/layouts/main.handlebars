@@ -24,7 +24,11 @@
             </div>
             <div class="uk-navbar-right">
               <ul class="uk-navbar-nav">
-                <li><a href="/login">Login</a></li>
+                {{#if logged_in}}
+                  <li><a href="/login">Logout</a></li>
+                {{else}}
+                  <li><a href="/login">Login</a></li>
+                {{/if}}
               </ul>
             </div>
           </div>
@@ -34,6 +38,10 @@
     <main class="uk-flex uk-flex-center">
       {{{body}}}
     </main>
+
+    {{#if logged_in}}
+      <script src="./js/logout.js"></script>
+    {{/if}}
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.24/dist/js/uikit.min.js"></script>
