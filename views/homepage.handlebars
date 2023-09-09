@@ -1,7 +1,7 @@
-<section>
+<div class="uk-container">
+  <section class="uk-section uk-flex uk-flex-column uk-flex-center">
       {{#each blogPosts as |post|}}
-        {{!-- {{log post}} --}}
         {{> post-partial post}}
       {{/each}}
-</section>
-
+  </section>
+</div>

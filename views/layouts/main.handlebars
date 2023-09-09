@@ -26,7 +26,7 @@
               <ul class="uk-navbar-nav">
                 {{log user}}
                 {{#if logged_in}}
-                  <li><a href="/login">Logout</a></li>
+                  <li><a href="/login" id="logout">Logout</a></li>
                 {{else}}
                   <li><a href="/login">Login</a></li>
                 {{/if}}
@@ -36,7 +36,7 @@
         </div>
       </nav>
     </header>
-    <main class="uk-flex uk-flex-center">
+    <main class="uk-flex uk-flex-left">
       {{{body}}}
     </main>
 
