@@ -33,9 +33,17 @@ router.get("/dashboard", withAuth, async (req, res) => {
     attributes: { exclude: ["password"] },
     include: [{ model: Post, include: [{ model: Comment }] }],
   });
+
+  const commentData = await User.findByPk(req.session.user_id, {
+    attributes: { exclude: ["password"] },
+    include: [{ model: Comment, include: [{ model: Post }] }],
+  });
+
   const user = userData.get({ plain: true });
+  const userComments = commentData.get({ plain: true });
   res.render("dashboard", {
     user,
+    userComments,
     logged_in: true,
   });
 });
