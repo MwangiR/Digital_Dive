@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
         },
       ],
     });
+
     const blogPosts = postData.map((post) => post.get({ plain: true }));
 
     res.render("homepage", {
@@ -34,13 +35,13 @@ router.get("/dashboard", withAuth, async (req, res) => {
   const user = userData.get({ plain: true });
   res.render("dashboard", {
     user,
-    loggedIn: true,
+    logged_in: true,
   });
 });
 
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/dashboard");
     return;
   }
   res.render("login");
