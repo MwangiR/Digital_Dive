@@ -13,8 +13,15 @@ router.get("/", async (req, res) => {
         {
           model: Comment,
           attributes: ["comment_text"],
+          include: [
+            {
+              model: User,
+              attributes: ["username"],
+            },
+          ],
         },
       ],
+      order: [["date_created", "DESC"]],
     });
 
     const blogPosts = postData.map((post) => post.get({ plain: true }));
@@ -31,7 +38,16 @@ router.get("/", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
   const userData = await User.findByPk(req.session.user_id, {
     attributes: { exclude: ["password"] },
-    include: [{ model: Post, include: [{ model: Comment }] }],
+    include: [
+      {
+        model: Post,
+        include: [
+          {
+            model: Comment,
+          },
+        ],
+      },
+    ],
   });
 
   const commentData = await User.findByPk(req.session.user_id, {
@@ -41,6 +57,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
   const user = userData.get({ plain: true });
   const userComments = commentData.get({ plain: true });
+
   res.render("dashboard", {
     user,
     userComments,
