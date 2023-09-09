@@ -1,5 +1,6 @@
 <section class="uk-container uk-flex uk-flex-column">
-  <article class="uk-grid-match" uk-grid>
+
+  <article class="uk-grid-match uk-padding-small" uk-grid>
     <h1>User Details</h1>
     <div class="uk-widht-auto@m">
       <h3 class="uk-card-title">Username</h3>
@@ -12,17 +13,66 @@
       </p>
     </div>
   </article>
+
   <article>
+    <button class="uk-button uk-button-secondary uk-margin-large-top uk-margin-large-bottom uk-width-1-1" type="button" uk-toggle="target: #offcanvas-push">Add New Post</button>
+      <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+        <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+            <h3>Title</h3>
+            <form class="uk-form-stacked newPost">
+              <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Title</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-input title-new"
+                    id="form-stacked-text"
+                    type="text"
+                    placeholder="Title"
+                  />
+                </div>
+              </div>
+              <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-text">Post</label>
+                <div class="uk-form-controls">
+                  <textarea
+                    class="uk-textarea userpost-new"
+                    id="form-stacked-text"
+                    rows="5"
+                    placeholder="Post"
+                  ></textarea>
+                </div>
+              </div>
+              <p class="uk-text-right">
+                <button class="uk-button uk-button-primary" type="submit">Save</button>
+              </p>
+            </form>
+        </div>
+    </div>
+  </article>
+
+  <article>
+    {{log userComments}}
     <h1>{{user.username}} Posts</h1>
-    {{#each user.posts as |userPost index|}}
+    {{#each user.posts as |userPost|}}
       {{> user-posts userPost}}
     {{else}}
       <p>No posts yet</p>
     {{/each}}
   </article>
+
   <article>
     <h1>{{user.username}} Comments</h1>
+    {{#each userComments.comments as |userComment|}}
+      {{!-- <p>{{userComment.comment_text}}</p> --}}
+      {{> user-comments userComment}}
+    {{else}}
+      <p>No comments yet</p>
+    {{/each}}
   </article>
+
 </section>
 
 
