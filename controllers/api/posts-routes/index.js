@@ -71,11 +71,18 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const postData = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
+    const postData = await Post.update(
+      {
+        title: req.body.title,
+        post_content: req.body.post_content,
+        user_id: req.session.user_id,
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+    );
 
     if (!postData) {
       return res.status(404).json({ message: "No post found with this id!" });
