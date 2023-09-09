@@ -1,7 +1,33 @@
-<div class="uk-container-xlarge">
+<section class="uk-container uk-flex uk-flex-column">
+  <article class="uk-grid-match" uk-grid>
+    <h1>User Details</h1>
+    <div class="uk-widht-auto@m">
+      <h3 class="uk-card-title">Username</h3>
+      <p>{{user.username}}
+      </p>
+    </div>
+    <div class="uk-widht-auto@m">
+      <h3 class="uk-card-title">Email</h3>
+      <p>{{user.email}}
+      </p>
+    </div>
+  </article>
+  <article>
+    <h1>{{user.username}} Posts</h1>
+    {{#each user.posts as |userPost index|}}
+      {{> user-posts userPost}}
+    {{else}}
+      <p>No posts yet</p>
+    {{/each}}
+  </article>
+  <article>
+    <h1>{{user.username}} Comments</h1>
+  </article>
+</section>
+
+
+{{! <div class="uk-container-xlarge">
   <div class="uk-section uk-flex uk-flex-left">
-    <h3 class="uk-card-title">User Details</h3>
-    <p>{{user.username}}
-    </p>
+
   </div>
-</div>
+</div> }}
