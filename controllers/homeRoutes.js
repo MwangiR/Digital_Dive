@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       blogPosts,
+      logged_in: req.session.logged_in,
     });
   } catch (error) {
     res.status(500).json(error);

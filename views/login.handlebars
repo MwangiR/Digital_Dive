@@ -1,75 +1,83 @@
-<form class="uk-form-horizontal uk-margin-large login-form">
+<div class="uk-container">
+  <div class="uk-grid-divider uk-child-width-expand@s uk-grid-match" uk-grid>
+    <div>
+      <h1>Login</h1>
 
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Email</label>
-    <div class="uk-form-controls">
-      <input
-        class="uk-input email-login"
-        id="form-horizontal-text "
-        type="text"
-        placeholder="Some text..."
-      />
+      <form class="uk-form-horizontal uk-margin-large login-form">
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text">Email</label>
+          <div class="uk-form-controls">
+            <input
+              class="uk-input email-login"
+              id="form-horizontal-text "
+              type="text"
+              placeholder="Some text..."
+            />
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text">Password</label>
+          <div class="uk-form-controls">
+            <input
+              class="uk-input password-login"
+              id="form-horizontal-text "
+              type="text"
+              placeholder="Some text..."
+            />
+          </div>
+        </div>
+        <button
+          class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
+          type="submit"
+        >Login</button>
+      </form>
+    </div>
+
+    <div>
+      <h1>Sign Up</h1>
+      <form class="uk-form-horizontal uk-margin-large signup-form">
+
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text">Username: </label>
+          <div class="uk-form-controls">
+            <input
+              class="uk-input username-signup"
+              id="form-horizontal-text "
+              type="text"
+              placeholder="Some text..."
+            />
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text">Email: </label>
+          <div class="uk-form-controls">
+            <input
+              class="uk-input email-signup"
+              id="form-horizontal-text "
+              type="text"
+              placeholder="Some text..."
+            />
+          </div>
+        </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text">Password: </label>
+          <div class="uk-form-controls">
+            <input
+              class="uk-input password-signup"
+              id="form-horizontal-text "
+              type="text"
+              placeholder="Some text..."
+            />
+          </div>
+        </div>
+
+        <button
+          class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
+          type="submit"
+        >Sign Up</button>
+      </form>
     </div>
   </div>
-
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Password</label>
-    <div class="uk-form-controls">
-      <input
-        class="uk-input password-login"
-        id="form-horizontal-text "
-        type="text"
-        placeholder="Some text..."
-      />
-    </div>
-  </div>
-
-  <button
-    class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
-    type="submit"
-  >Login</button>
-</form>
-
-<form class="uk-form-horizontal uk-margin-large signup-form">
-
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Username: </label>
-    <div class="uk-form-controls">
-      <input
-        class="uk-input username-signup"
-        id="form-horizontal-text "
-        type="text"
-        placeholder="Some text..."
-      />
-    </div>
-  </div>
-
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Email: </label>
-    <div class="uk-form-controls">
-      <input
-        class="uk-input email-signup"
-        id="form-horizontal-text "
-        type="text"
-        placeholder="Some text..."
-      />
-    </div>
-  </div>
-
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Password: </label>
-    <div class="uk-form-controls">
-      <input
-        class="uk-input password-signup"
-        id="form-horizontal-text "
-        type="text"
-        placeholder="Some text..."
-      />
-    </div>
-  </div>
-
-  <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" type="submit">Sign
-    Up</button>
-</form>
+</div>
 
 <script src="./js/login.js"></script>
