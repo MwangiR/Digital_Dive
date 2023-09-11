@@ -19,7 +19,7 @@ const postEditHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -50,29 +50,10 @@ const newPostHandler = async (event) => {
   }
 };
 
-const postDeleteHandler = async (event) => {
-  event.preventDefault();
-  if (event.target.hasAttribute("data-post-id")) {
-    const post_id = event.target.getAttribute("data-post-id");
-    const response = await fetch(`/api/posts/${post_id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert(response.statusText);
-    }
-  }
-};
-
 document.addEventListener("submit", function (event) {
   if (event.target.classList.contains("reEditBlog")) {
     postEditHandler(event);
   }
-});
-
-document.querySelectorAll(".deleteBtn").forEach(function (button) {
-  button.addEventListener("clicked", postDeleteHandler);
 });
 
 document.querySelector(".newPost").addEventListener("submit", newPostHandler);
