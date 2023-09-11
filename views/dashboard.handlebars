@@ -48,9 +48,44 @@
     {{log userComments}}
     <h1>{{user.username}} Posts</h1>
     {{#each user.posts as |userPost|}}
-    {{> user-posts userPost}}
+    {{!-- {{> user-posts userPost}} --}}
+    <div class="uk-container" uk-grid>
+      <div class="uk-width-expand uk-margin">
+        <div class="uk-card uk-card-small uk-padding uk-card-hover uk-card-default uk-width-2xlarge post-Card"
+          data-post-id="{{id}}">
+          <div class="uk-card-title uk-flex uk-flex-between post-Title">{{title}}
+          </div>
+
+          <div class="uk-card-body">{{post_content}}</div>
+          <a class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" id="editPostBtn">Edit Post</a>
+
+          <form class="uk-form-stacked postEdit">
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Title</label>
+              <div class="uk-form-controls">
+                <input class="uk-input title-edit" id="form-stacked-text" type="text" placeholder="Title" />
+              </div>
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Post</label>
+              <div class="uk-form-controls">
+                <textarea class="uk-textarea userpost-edit" id="form-stacked-text" rows="5"
+                  placeholder="Post"></textarea>
+              </div>
+            </div>
+            <p class="uk-text-right">
+              <button class="uk-button uk-button-danger uk-modal-close deleteBtn" type="submit">Delete</button>
+              <button class="uk-button uk-button-primary saveEditedBtn" type="submit">Save</button>
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
     {{else}}
-    <p>No posts yet</p>
+    <div class="uk-alert-warning" uk-alert>
+      <p>No Posts yet...... <span uk-icon="info"></span></p>
+    </div>
     {{/each}}
   </article>
 
@@ -60,15 +95,13 @@
     {{!-- <p>{{userComment.comment_text}}</p> --}}
     {{> user-comments userComment}}
     {{else}}
-    <p>No comments yet</p>
+    <div class="uk-alert-warning" uk-alert>
+      <p>No Comments yet...... <span uk-icon="info"></span></p>
+    </div>
     {{/each}}
   </article>
 
 </section>
 
 <script src="/js/newPost.js"></script>
-{{! <div class="uk-container-xlarge">
-  <div class="uk-section uk-flex uk-flex-left">
-
-  </div>
-</div> }}
+<script src="/js/editPost.js"></script>
