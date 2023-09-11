@@ -1,7 +1,7 @@
 const newCommentHandler = async (event) => {
   event.preventDefault();
-  const postID = parseInt(document.querySelector(".current-Post").getAttribute("data-post-id"));
-  console.log(document.querySelector(".current-Post").getAttribute("data-post-id"));
+  const postID = document.querySelector(".current-Post").getAttribute("data-post-id");
+  console.log(postID);
   const commentContent = document.querySelector(".userComment").value.trim();
   if (commentContent) {
     const response = await fetch("/api/comments", {
