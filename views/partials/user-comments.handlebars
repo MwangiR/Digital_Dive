@@ -1,16 +1,47 @@
 <div class="uk-container" uk-grid>
-  <div class="uk-width-expand">
+  <div class="uk-width-expand uk-margin">
     <div
-      class="uk-card uk-card-small uk-padding-large uk-card-hover uk-card-default uk-width-2xlarge"
+      class="uk-card uk-card-small uk-padding uk-card-hover uk-card-default uk-width-2xlarge post-Card"
+      data-post-id="{{post.id}}"
+      data-comment-id="{{id}}"
     >
-      <div class="uk-card-title uk-flex uk-flex-between">{{post.title}}
-        <button
-          class="uk-button uk-button-primary uk-margin-small-right"
-          type="button"
-          uk-toggle="target: #modal-example-{{id}}"
-        >Edit Post</button>
+      <div class="uk-card-title uk-flex uk-flex-between post-Title">Post:
+        {{post.title}}
       </div>
-      <div class="uk-card-body">You posted: {{comment_text}}</div>
+      {{!-- {{log userComment.id}} --}}
+
+      <div class="uk-card-body">You commented on the above post: {{comment_text}}</div>
+      <div class="buttons-container uk-flex uk-flex-row">
+        <a
+          class="uk-button uk-button-secondary uk-width-1-2 uk-margin-small-bottom"
+          id="editCommentBtn"
+        >Edit Comment</a>
+        <button
+          class="uk-button uk-button-danger uk-margin-small-bottom uk-margin-small-left uk-width-1-2 commentDeleteBtn"
+          type="submit"
+        >Delete</button>
+      </div>
+
+      <form class="uk-form-stacked commentEdit">
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">Post</label>
+          <div class="uk-form-controls">
+            <textarea
+              class="uk-textarea userComment-Edit"
+              id="form-stacked-text"
+              rows="5"
+              placeholder="Post"
+            ></textarea>
+          </div>
+        </div>
+        <p class="uk-text-right">
+
+          <button class="uk-button uk-button-primary editedCommentBtn" type="submit">Save Comment</button>
+        </p>
+      </form>
+
     </div>
   </div>
 </div>
+
+<script src="/js/editComment.js"></script>

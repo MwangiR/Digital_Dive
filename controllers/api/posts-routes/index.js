@@ -28,16 +28,27 @@ router.get("/:id", async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ["username"],
-        },
-        {
           model: Comment,
-          attributes: ["comment_text"],
+          include: [
+            {
+              model: User,
+              attributes: ["username"],
+            },
+          ],
         },
       ],
     });
-    res.status(200).json(postData);
+
+    if (!postData) {
+      return res.status(404).json({ message: "No post found with this id!" });
+    }
+    // res.status(200).json(postData);
+    const posts = postData.get({ plain: true });
+
+    res.render("add-comment", {
+      posts,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -51,19 +62,6 @@ router.post("/", async (req, res) => {
       user_id: req.session.user_id,
     });
     res.status(200).json(postData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.delete("/:id", async (req, res) => {
-  try {
-    const postData = await Post.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.sendStatus(200);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -88,6 +86,19 @@ router.put("/:id", async (req, res) => {
       return res.status(404).json({ message: "No post found with this id!" });
     }
 
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
     res.status(200).json(postData);
   } catch (err) {
     res.status(400).json(err);

@@ -1,8 +1,8 @@
 const newCommentHandler = async (event) => {
   event.preventDefault();
-  const postID = event.target.closest(".current-Post").getAttribute("data-post-id");
+  const postID = document.querySelector(".current-Post").getAttribute("data-post-id");
   console.log(postID);
-  const commentContent = event.target.querySelector(".userComment").value.trim();
+  const commentContent = document.querySelector(".userComment").value.trim();
   if (commentContent) {
     const response = await fetch("/api/comments", {
       method: "POST",
@@ -13,15 +13,11 @@ const newCommentHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
   }
 };
 
-document.addEventListener("submit", function (event) {
-  if (event.target.classList.contains("comment-form")) {
-    newCommentHandler(event);
-  }
-});
+document.querySelector(".comment-form").addEventListener("submit", newCommentHandler);

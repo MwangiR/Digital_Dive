@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.16.24/dist/css/uikit.min.css"
     />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="/css/index.css" />
     <title>Digital Dive</title>
   </head>
   <body>
@@ -24,7 +24,7 @@
             </div>
             <div class="uk-navbar-right">
               <ul class="uk-navbar-nav">
-                {{log user}}
+                {{!-- {{log user}} --}}
                 {{#if logged_in}}
                   <li><a href="/login" id="logout">Logout</a></li>
                 {{else}}
@@ -41,7 +41,7 @@
     </main>
 
     {{#if logged_in}}
-      <script src="./js/logout.js"></script>
+      <script src="/js/logout.js"></script>
     {{/if}}
 
     <footer>Digital Dive</footer>

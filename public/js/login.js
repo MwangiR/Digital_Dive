@@ -17,7 +17,19 @@ const loginFormHandler = async (event) => {
       console.log("login successful");
       document.location.replace("/dashboard");
     } else {
-      alert(response.statusText);
+      if (response.status === 400) {
+        const alertMessageEl = document.createElement("div");
+        alertMessageEl.textContent = "Incorrect email or password";
+        alertMessageEl.classList.add("uk-alert-danger");
+        alertMessageEl.setAttribute("uk-alert", "");
+
+        const closeButtonEl = document.createElement("a");
+        closeButtonEl.classList.add("uk-alert-close");
+        closeButtonEl.setAttribute("uk-close", "");
+
+        alertMessageEl.appendChild(closeButtonEl);
+        document.querySelector(".login-container").prepend(alertMessageEl);
+      }
     }
   }
 };
@@ -39,6 +51,7 @@ const signupFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
+      console.log("signup successful");
       document.location.replace("/dashboard");
     } else {
       alert(response.statusText);

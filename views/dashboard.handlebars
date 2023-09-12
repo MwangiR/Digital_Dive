@@ -15,69 +15,101 @@
   </article>
 
   <article>
-    <button class="uk-button uk-button-secondary uk-margin-large-top uk-margin-large-bottom uk-width-1-1" type="button" uk-toggle="target: #offcanvas-push">Add New Post</button>
-      <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
-        <div class="uk-offcanvas-bar">
+    <button class="uk-button uk-button-secondary uk-margin-large-top uk-margin-large-bottom uk-width-1-1" type="button"
+      uk-toggle="target: #offcanvas-push">Add New Post</button>
+    <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+      <div class="uk-offcanvas-bar">
 
-            <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-            <h3>Title</h3>
-            <form class="uk-form-stacked newPost">
-              <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Title</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-input title-new"
-                    id="form-stacked-text"
-                    type="text"
-                    placeholder="Title"
-                  />
-                </div>
-              </div>
-              <div class="uk-margin">
-                <label class="uk-form-label" for="form-stacked-text">Post</label>
-                <div class="uk-form-controls">
-                  <textarea
-                    class="uk-textarea userpost-new"
-                    id="form-stacked-text"
-                    rows="5"
-                    placeholder="Post"
-                  ></textarea>
-                </div>
-              </div>
-              <p class="uk-text-right">
-                <button class="uk-button uk-button-primary" type="submit">Save</button>
-              </p>
-            </form>
-        </div>
+        <h3>Title</h3>
+        <form class="uk-form-stacked newPost">
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Title</label>
+            <div class="uk-form-controls">
+              <input class="uk-input title-new" id="form-stacked-text" type="text" placeholder="Title" />
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">Post</label>
+            <div class="uk-form-controls">
+              <textarea class="uk-textarea userpost-new" id="form-stacked-text" rows="5" placeholder="Post"></textarea>
+            </div>
+          </div>
+          <p class="uk-text-right">
+            <button class="uk-button uk-button-primary" type="submit">Save Post</button>
+          </p>
+        </form>
+      </div>
     </div>
   </article>
 
   <article>
-    {{log userComments}}
+    {{!-- {{log userComments}} --}}
     <h1>{{user.username}} Posts</h1>
     {{#each user.posts as |userPost|}}
-      {{> user-posts userPost}}
+    {{!-- {{> user-posts userPost}} --}}
+    <div class="uk-container" uk-grid>
+      <div class="uk-width-expand uk-margin">
+        <div class="uk-card uk-card-small uk-padding uk-card-hover uk-card-default uk-width-2xlarge post-Card"
+          data-post-id="{{id}}">
+          <div class="uk-card-title uk-flex uk-flex-between post-Title">{{title}}
+          </div>
+
+          <div class="uk-card-body">{{post_content}}</div>
+
+          <div class="buttons-container uk-flex uk-flex-row">
+            <a class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom" id="editPostBtn">Edit Post</a>
+            <button
+              class="uk-button uk-button-danger uk-margin-small-bottom uk-margin-small-left uk-width-1-2 postDeleteBtn"
+              type="submit">Delete</button>
+          </div>
+
+
+          <form class="uk-form-stacked postEdit">
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Title</label>
+              <div class="uk-form-controls">
+                <input class="uk-input title-edit" id="form-stacked-text" type="text" placeholder="Title" />
+              </div>
+            </div>
+            <div class="uk-margin">
+              <label class="uk-form-label" for="form-stacked-text">Post</label>
+              <div class="uk-form-controls">
+                <textarea class="uk-textarea userpost-edit" id="form-stacked-text" rows="5"
+                  placeholder="Post"></textarea>
+              </div>
+            </div>
+            <p class="uk-text-right">
+
+              <button class="uk-button uk-button-primary saveEditedBtn" type="submit">Save Post</button>
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
     {{else}}
-      <p>No posts yet</p>
+    <div class="uk-alert-warning" uk-alert>
+      <p>No Posts yet...... <span uk-icon="info"></span></p>
+    </div>
     {{/each}}
   </article>
 
   <article>
+    {{!-- {{log userComments}} --}}
     <h1>{{user.username}} Comments</h1>
     {{#each userComments.comments as |userComment|}}
-      {{!-- <p>{{userComment.comment_text}}</p> --}}
-      {{> user-comments userComment}}
+    {{!-- <p>{{userComment.comment_text}}</p> --}}
+    {{> user-comments userComment}}
     {{else}}
-      <p>No comments yet</p>
+    <div class="uk-alert-warning" uk-alert>
+      <p>No Comments yet...... <span uk-icon="info"></span></p>
+    </div>
     {{/each}}
   </article>
 
 </section>
 
-
-{{! <div class="uk-container-xlarge">
-  <div class="uk-section uk-flex uk-flex-left">
-
-  </div>
-</div> }}
+<script src="/js/newPost.js"></script>
+<script src="/js/editPost.js"></script>
