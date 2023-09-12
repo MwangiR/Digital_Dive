@@ -10,13 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const postCard = button.closest(".post-Card");
       const editPostForm = postCard.querySelector(".postEdit");
 
-      editPostForm.style.display = "block";
+      // editPostForm.style.display = "block";
+      if (editPostForm.style.display === "none") {
+        editPostForm.style.display = "block";
+      } else {
+        editPostForm.style.display = "none";
+      }
 
       const postTitle = postCard.querySelector(".uk-card-title");
       const postBody = postCard.querySelector(".uk-card-body");
 
-      postTitle.style.display = "none";
-      postBody.style.display = "none";
+      postTitle.style.display = "block";
+      postBody.style.display = "block";
     });
   });
 
