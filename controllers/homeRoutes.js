@@ -102,18 +102,16 @@ router.post("/signup", async (req, res) => {
     const userData = await User.create(req.body);
     req.session.save(() => {
       req.session.user_id = userData.id;
-      //   req.session.username = userData.username;
       req.session.logged_in = true;
     });
 
-    console.log("Redirecting to /dashboard");
-    res.redirect("/dashboard");
+    console.info("Redirecting to /dashboard");
+    res.render("dashboard");
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
   }
 });
-
 
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
