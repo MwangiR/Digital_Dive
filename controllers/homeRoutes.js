@@ -98,7 +98,9 @@ router.get("/addcomments/:id", async (req, res) => {
 
 router.get("/login", async (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/dashboard");
+    res.render("dashboard", {
+      logged_in: req.session.logged_in,
+    });
     return;
   }
   res.render("login");
