@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ["comment_text"],
+          // attributes: ["comment_text"],
           include: [
             {
               model: User,
@@ -89,7 +89,7 @@ router.get("/addcomments/:id", async (req, res) => {
 
     res.render("add-comment", {
       posts,
-      logged_in: req.session.logged_in,
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);

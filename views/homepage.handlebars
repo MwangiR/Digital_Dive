@@ -1,8 +1,6 @@
 <div class="uk-container">
   <section class="uk-section uk-flex uk-flex-column uk-flex-center">
     {{#each blogPosts as |post|}}
-      {{!-- {{log post}} --}}
-      {{!-- {{> post-partial post}} --}}
 
       <div class="uk-container" uk-grid>
         <div class="uk-width-expand">
@@ -17,24 +15,13 @@
                 <a class="uk-accordion-title" href="#">Comments</a>
                 <div class="uk-accordion-content">
 
-                  {{! <form class="uk-form-stacked newComment comment-form">
-                  <div class="uk-margin">
-                    <label class="uk-form-label" for="form-stacked-text">Comment</label>
-                    <div class="uk-form-controls">
-                      <textarea class="uk-textarea userComment" id="form-stacked-text" rows="3"
-                        placeholder="Comment"></textarea>
-                    </div>
-                    <p class="uk-text-right">
-                      <button class="uk-button uk-button-primary" type="submit">
-                        Submit
-                      </button>
-                  </div>
-                </form> }}
 
-                  <a
-                    class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
-                    href="/addcomments/{{id}}"
-                  >Add Comment</a>
+                  {{#if ../logged_in}}
+                    <a
+                      class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                      href="/addcomments/{{id}}"
+                    >Add Comment</a>
+                  {{/if}}
 
                   {{#each comments as |comment|}}
                     <article class="uk-comment" role="comment">
@@ -42,7 +29,7 @@
                         <div class="uk-grid-medium uk-flex-middle" uk-grid>
                           <div class="uk-width-expand">
 
-                            {{log comment.user.username}}
+                            {{!-- {{log comment}} --}}
 
                             <h4 class="uk-comment-title uk-margin-remove"><a
                                 class="uk-link-reset"
@@ -51,7 +38,8 @@
                             <ul
                               class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top"
                             >
-                              <li><a href="#">12 days ago</a></li>
+                              <li class="formatDate"><a href="#">Commented on:
+                                  {{format_date comment.date_created}}</a></li>
                             </ul>
                           </div>
                         </div>

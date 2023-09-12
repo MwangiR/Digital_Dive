@@ -10,11 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const postCard = button.closest(".post-Card");
       const editCommentForm = postCard.querySelector(".commentEdit");
 
-      editCommentForm.style.display = "block";
+      // editCommentForm.style.display = "block";
+      if (editCommentForm.style.display === "none") {
+        editCommentForm.style.display = "block";
+      } else {
+        editCommentForm.style.display = "none";
+      }
 
       const postBody = postCard.querySelector(".uk-card-body");
 
-      postBody.style.display = "none";
+      postBody.style.display = "block";
     });
   });
 
@@ -48,6 +53,27 @@ document.addEventListener("DOMContentLoaded", function () {
             comment_content: updatedContent,
           }),
           headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          document.location.replace("/dashboard");
+        } else {
+          alert(response.statusText);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
+
+  const commentDeleteBtn = document.querySelectorAll(".commentDeleteBtn");
+  commentDeleteBtn.forEach(function (button) {
+    button.addEventListener("click", async function () {
+      const postCard = button.closest(".post-Card");
+      const commentID = postCard.getAttribute("data-comment-id");
+      console.log("this is the id", commentID);
+      try {
+        const response = await fetch(`/api/comments/${commentID}`, {
+          method: "DELETE",
         });
         if (response.ok) {
           document.location.replace("/dashboard");
