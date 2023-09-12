@@ -59,4 +59,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  const commentDeleteBtn = document.querySelectorAll(".commentDeleteBtn");
+  commentDeleteBtn.forEach(function (button) {
+    button.addEventListener("click", async function () {
+      const postCard = button.closest(".post-Card");
+      const commentID = postCard.getAttribute("data-comment-id");
+      console.log("this is the id", commentID);
+      try {
+        const response = await fetch(`/api/comments/${commentID}`, {
+          method: "DELETE",
+        });
+        if (response.ok) {
+          document.location.replace("/dashboard");
+        } else {
+          alert(response.statusText);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 });

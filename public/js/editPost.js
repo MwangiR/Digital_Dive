@@ -65,4 +65,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  const postDeleteBtn = document.querySelectorAll(".postDeleteBtn");
+  postDeleteBtn.forEach(function (button) {
+    button.addEventListener("click", async function () {
+      const postCard = button.closest(".post-Card");
+      const postId = postCard.getAttribute("data-post-id");
+      console.log("this is the id", postId);
+      try {
+        const response = await fetch(`/api/posts/${postId}`, {
+          method: "DELETE",
+        });
+        if (response.ok) {
+          document.location.replace("/dashboard");
+        } else {
+          alert(response.statusText);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
 });

@@ -11,10 +11,16 @@
       {{!-- {{log userComment.id}} --}}
 
       <div class="uk-card-body">You commented on the above post: {{comment_text}}</div>
-      <a
-        class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom"
-        id="editCommentBtn"
-      >Edit Comment</a>
+      <div class="buttons-container uk-flex uk-flex-row">
+        <a
+          class="uk-button uk-button-secondary uk-width-1-2 uk-margin-small-bottom"
+          id="editCommentBtn"
+        >Edit Comment</a>
+        <button
+          class="uk-button uk-button-danger uk-margin-small-bottom uk-margin-small-left uk-width-1-2 commentDeleteBtn"
+          type="submit"
+        >Delete</button>
+      </div>
 
       <form class="uk-form-stacked commentEdit">
         <div class="uk-margin">
