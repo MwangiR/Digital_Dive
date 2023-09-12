@@ -59,11 +59,18 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const commentData = await Comment.update(req.body, {
-      where: {
-        id: req.params.id,
+    const commentData = await Comment.update(
+      {
+        comment_text: req.body.comment_content,
+        user_id: req.session.user_id,
+        post_id: req.body.post_id,
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+    );
     res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);

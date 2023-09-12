@@ -45,7 +45,7 @@
   </article>
 
   <article>
-    {{log userComments}}
+    {{!-- {{log userComments}} --}}
     <h1>{{user.username}} Posts</h1>
     {{#each user.posts as |userPost|}}
     {{!-- {{> user-posts userPost}} --}}
@@ -90,6 +90,7 @@
   </article>
 
   <article>
+    {{log userComments}}
     <h1>{{user.username}} Comments</h1>
     {{#each userComments.comments as |userComment|}}
     {{!-- <p>{{userComment.comment_text}}</p> --}}
