@@ -99,16 +99,19 @@ router.get("/addcomments/:id", async (req, res) => {
 router.post("/signup", async (req, res) => {
   try {
     const userData = await User.create(req.body);
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-    });
+    // req.session.save(() => {
+    //   req.session.user_id = userData.id;
+    //   req.session.logged_in = true;
+    // });
+    req.session.user_id = userData.id;
+    req.session.logged_in = true;
+    await req.session.save();
 
     console.info("Redirecting to /dashboard");
     res.redirect("/dashboard");
   } catch (err) {
     console.log(err);
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
