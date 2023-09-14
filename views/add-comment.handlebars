@@ -25,24 +25,30 @@
                             </form>
 
                             {{#each posts.comments as |comment|}}
-                            <article class="uk-comment" role="comment">
-                                <header class="uk-comment-header">
-                                    <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                                        <div class="uk-width-expand">
-                                            {{log comment.user.username}}
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
-                                                    href="#">{{comment.user.username}}</a></h4>
-                                            <ul
-                                                class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                                <li><a href="#">12 days ago</a></li>
-                                            </ul>
+                            <ul class="uk-comment-lists postCommentList">
+                                <li>
+                                    <article class="uk-comment" role="comment">
+                                        <header class="uk-comment-header">
+                                            <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                                <div class="uk-width-expand">
+                                                    {{log comment.user.username}}
+                                                    <h4 class="uk-comment-title uk-margin-remove"><a
+                                                            class="uk-link-reset" href="#">{{comment.user.username}}</a>
+                                                    </h4>
+                                                    <ul
+                                                        class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                                                        <li><a href="#">12 days ago</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </header>
+                                        <div class="uk-comment-body">
+                                            <p>{{comment.comment_text}}</p>
                                         </div>
-                                    </div>
-                                </header>
-                                <div class="uk-comment-body">
-                                    <p>{{comment.comment_text}}</p>
-                                </div>
-                            </article>
+                                    </article>
+                                </li>
+                            </ul>
+
 
                             <br />
                             {{else}}
