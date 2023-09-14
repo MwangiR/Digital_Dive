@@ -97,10 +97,8 @@
   </article>
 
   <article>
-    {{!-- {{log userComments}} --}}
     <h1>{{user.username}} Comments</h1>
-    {{#each userComments.comments as |userComment|}}
-    {{!-- <p>{{userComment.comment_text}}</p> --}}
+    {{#each user.comments as |userComment|}}
     {{> user-comments userComment}}
     {{else}}
     <div class="uk-alert-warning" uk-alert>

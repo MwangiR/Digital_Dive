@@ -47,20 +47,24 @@ router.get("/dashboard", withAuth, async (req, res) => {
           },
         ],
       },
+      {
+        model: Comment,
+        include: [{ model: Post }],
+      },
     ],
   });
 
-  const commentData = await User.findByPk(req.session.user_id, {
-    attributes: { exclude: ["password"] },
-    include: [{ model: Comment, include: [{ model: Post }] }],
-  });
+  // const commentData = await User.findByPk(req.session.user_id, {
+  //   attributes: { exclude: ["password"] },
+  //   include: [{ model: Comment, include: [{ model: Post }] }],
+  // });
 
   const user = userData.get({ plain: true });
-  const userComments = commentData.get({ plain: true });
+  // const userComments = commentData.get({ plain: true });
 
   res.render("dashboard", {
     user,
-    userComments,
+    // userComments,
     logged_in: true,
   });
 });
