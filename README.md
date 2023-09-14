@@ -26,15 +26,13 @@ Back-End: On the back-end, the application utilizes a MySQL database and is buil
 
 Users can interact with the back-end API using tools like Insomnia, allowing them to create, retrieve, update, and delete blog posts, authors, and comments. This full-stack application provides bloggers and readers with a holistic and user-friendly environment for all their blogging needs.
 
-
 ## Heroku Link
 
 Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 
 ## Screenshots
 
-![Screenshot 1](./images/Screenshot.jpg)
-
+![Screenshot 1](./images/Screenshot.png)
 
 ## Technologies Used
 
@@ -105,7 +103,6 @@ Navigate [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 
 - Manage post craft backend with Express routing.
 - GET, POST, PUT, and DELETE routes for post, comments and users.
-
 
 ## Usage
 
