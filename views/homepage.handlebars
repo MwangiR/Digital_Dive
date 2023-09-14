@@ -1,29 +1,35 @@
 <div class="uk-container">
   <section class="uk-section uk-flex uk-flex-column uk-flex-center">
     {{#each blogPosts as |post|}}
+    {{log post}}
 
-      <div class="uk-container" uk-grid>
-        <div class="uk-width-expand">
-          <div
-            class="uk-card uk-card-small uk-card-hover uk-card-default uk-width-2xlarge uk-padding current-Post"
-            data-post-id="{{id}}"
-          >
-            <div class="uk-card-title">{{post.title}}</div>
-            <div class="uk-card-body">{{post_content}}</div>
-            <ul uk-accordion>
-              <li>
-                <a class="uk-accordion-title" href="#">Comments</a>
-                <div class="uk-accordion-content">
+    <div class="uk-container" uk-grid>
+      <div class="uk-width-expand">
+        <div class="uk-card uk-card-small uk-card-hover uk-card-default uk-width-2xlarge uk-padding current-Post"
+          data-post-id="{{id}}">
+          <p class="uk-text-right">
+            Posted on: {{format_date post.date_created}} By: {{user.username}}
+          </p>
+          <div class="uk-card-title">{{post.title}}</div>
+
+          <div class="uk-card-body">{{post_content}}</div>
+          <ul uk-accordion>
+            <li>
+              <a class="uk-accordion-title" href="#">Comments</a>
+              <div class="uk-accordion-content">
 
 
-                  {{#if ../logged_in}}
-                    <a
-                      class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
-                      href="/addcomments/{{id}}"
-                    >Add Comment</a>
-                  {{/if}}
+                {{#if ../logged_in}}
+                <a class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"
+                  href="/addcomments/{{id}}">Add Comment</a>
+                {{else}}
+                <a class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" href="/login">Sign Up or
+                  Login </a>
+                {{/if}}
 
-                  {{#each comments as |comment|}}
+                {{#each comments as |comment|}}
+                <ul class="uk-comment-lists postCommentList">
+                  <li>
                     <article class="uk-comment" role="comment">
                       <header class="uk-comment-header">
                         <div class="uk-grid-medium uk-flex-middle" uk-grid>
@@ -31,13 +37,9 @@
 
                             {{!-- {{log comment}} --}}
 
-                            <h4 class="uk-comment-title uk-margin-remove"><a
-                                class="uk-link-reset"
-                                href="#"
-                              >{{comment.user.username}}</a></h4>
-                            <ul
-                              class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top"
-                            >
+                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset"
+                                href="#">{{comment.user.username}}</a></h4>
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                               <li class="formatDate"><a href="#">Commented on:
                                   {{format_date comment.date_created}}</a></li>
                             </ul>
@@ -48,17 +50,20 @@
                         <p>{{comment.comment_text}}</p>
                       </div>
                     </article>
+                  </li>
+                </ul>
 
-                    <br />
-                  {{else}}
-                    <p>No comments yet</p>
-                  {{/each}}
-                </div>
-              </li>
-            </ul>
-          </div>
+
+                <br />
+                {{else}}
+                <p>No comments yet, <a href="/login">Sign Up or Login </a>to comment.</p>
+                {{/each}}
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
     {{/each}}
   </section>
 </div>
