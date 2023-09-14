@@ -96,7 +96,6 @@ router.get("/addcomments/:id", async (req, res) => {
   }
 });
 
-
 router.post("/signup", async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -106,7 +105,9 @@ router.post("/signup", async (req, res) => {
     });
 
     console.info("Redirecting to /dashboard");
-    res.render("dashboard");
+    res.render("dashboard", {
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
