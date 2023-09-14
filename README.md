@@ -18,9 +18,14 @@
 
 ## Description
 
-The E-commerce Back-End application provides internet retail companies with a MySQL database to manage categories, products, and tags related to their e-commerce business.
-Built with Sequelize, an ORM (Object-Relational Mapping) dependency, this project enhances code readability, reusability, and maintainability by organizing larger files into manageable pieces.
-Users can test API routes using tools like Insomnia to view, post, update, and delete data from the database.
+Post Craft is a comprehensive web solution that empowers bloggers and content creators with a seamless and feature-rich platform. This application includes both a front-end and a back-end component, creating a cohesive user experience.
+
+Front-End: The front-end of the application provides users with an intuitive and visually appealing interface for reading and interacting with blog posts. It offers features such as browsing posts by category, author, or date, leaving comments, and bookmarking favorite articles.
+
+Back-End: On the back-end, the application utilizes a MySQL database and is built with Sequelize, an ORM (Object-Relational Mapping) library. This robust back-end enables efficient management of blog posts, authors, categories, and user comments. It enhances code organization, making it more readable and maintainable.
+
+Users can interact with the back-end API using tools like Insomnia, allowing them to create, retrieve, update, and delete blog posts, authors, and comments. This full-stack application provides bloggers and readers with a holistic and user-friendly environment for all their blogging needs.
+
 
 ## Heroku Link
 
@@ -41,7 +46,6 @@ Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
 ![Heroku](https://img.shields.io/badge/Heroku-Deployed-brightgreen?style=for-the-badge&logo=heroku)
 
-
 - Dependencies: sequelize (v5.22.5), mysql2 (v2.3.3), express (v4.17.1), dotenv (v8.6.0), nodemon (v2.0.3)
 - Testing: Insomnia
 
@@ -56,20 +60,21 @@ Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 [![mysql2](https://img.shields.io/badge/mysql2-v2.2.5-purple)](https://www.npmjs.com/package/mysql2/v/2.2.5)
 [![sequelize](https://img.shields.io/badge/sequelize-v6.3.5-indigo)](https://www.npmjs.com/package/sequelize/v/6.3.5)
 
-
-1. Clone the repository: `git clone https://github.com/MwangiR/CommerceSync.git`
+1. Clone the repository: `git clone https://github.com/MwangiR/PostCraft.git`
 2. Open in VS Code. If not installed, [install VS Code](https://code.visualstudio.com/).
 3. Install Node.js v16 (e.g., using npm: `npm i node@16`).
 4. Install from package.json: `npm i`
 5. To install dependencies independently:
-    - **bcrypt**: `npm i bcrypt@5.0.0`
-    - **connect-session-sequelize**: `npm i connect-session-sequelize@7.0.4`
-    - **dotenv**: `npm i dotenv@8.2.0`
-    - **express**: `npm i express@4.17.1`
-    - **express-handlebars**: `npm i express-handlebars@5.2.0`
-    - **express-session**: `npm i express-session@1.17.1`
-    - **mysql2**: `npm i mysql2@2.2.5`
-    - **sequelize**: `npm i sequelize@6.3.5`
+
+   - **bcrypt**: `npm i bcrypt@5.0.0`
+   - **connect-session-sequelize**: `npm i connect-session-sequelize@7.0.4`
+   - **dotenv**: `npm i dotenv@8.2.0`
+   - **express**: `npm i express@4.17.1`
+   - **express-handlebars**: `npm i express-handlebars@5.2.0`
+   - **express-session**: `npm i express-session@1.17.1`
+   - **mysql2**: `npm i mysql2@2.2.5`
+   - **sequelize**: `npm i sequelize@6.3.5`
+
 6. Create a `.env` file in the root directory with your database credentials and session secret.
 
 ### Database Setup
@@ -98,8 +103,9 @@ Navigate [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 
 ## Features
 
-- Manage e-commerce backend with Express routing.
-- GET, POST, PUT, and DELETE routes for categories, products, and tags.
+- Manage post craft backend with Express routing.
+- GET, POST, PUT, and DELETE routes for post, comments and users.
+
 
 ## Usage
 
