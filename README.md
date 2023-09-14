@@ -26,6 +26,7 @@ Back-End: On the back-end, the application utilizes a MySQL database and is buil
 
 Users can interact with the back-end API using tools like Insomnia, allowing them to create, retrieve, update, and delete blog posts, authors, and comments. This full-stack application provides bloggers and readers with a holistic and user-friendly environment for all their blogging needs.
 
+
 ## Heroku Link
 
 Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
@@ -33,6 +34,7 @@ Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 ## Screenshots
 
 ![Screenshot 1](./images/Screenshot.jpg)
+
 
 ## Technologies Used
 
@@ -63,6 +65,7 @@ Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 3. Install Node.js v16 (e.g., using npm: `npm i node@16`).
 4. Install from package.json: `npm i`
 5. To install dependencies independently:
+
    - **bcrypt**: `npm i bcrypt@5.0.0`
    - **connect-session-sequelize**: `npm i connect-session-sequelize@7.0.4`
    - **dotenv**: `npm i dotenv@8.2.0`
@@ -71,6 +74,7 @@ Heroku Link [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
    - **express-session**: `npm i express-session@1.17.1`
    - **mysql2**: `npm i mysql2@2.2.5`
    - **sequelize**: `npm i sequelize@6.3.5`
+
 6. Create a `.env` file in the root directory with your database credentials and session secret.
 
 ### Database Setup
@@ -101,6 +105,7 @@ Navigate [here](https://secret-caverns-70181-54b0d21b6c15.herokuapp.com).
 
 - Manage post craft backend with Express routing.
 - GET, POST, PUT, and DELETE routes for post, comments and users.
+
 
 ## Usage
 
