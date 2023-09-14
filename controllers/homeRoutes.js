@@ -105,7 +105,7 @@ router.post("/signup", async (req, res) => {
     });
 
     console.info("Redirecting to /dashboard");
-    res.render("dashboard");
+    res.redirect("/dashboard");
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
